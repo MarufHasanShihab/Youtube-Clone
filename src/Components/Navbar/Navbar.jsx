@@ -1,4 +1,5 @@
 import './Navbar.css'
+import PropTypes from 'prop-types';
 import menu_icon from '../../assets/menu.png';
 import logo from '../../assets/logo.png';
 import search_icon from '../../assets/search.png';
@@ -7,11 +8,11 @@ import more_icon from '../../assets/more.png';
 import notifaction_icon from '../../assets/notification.png';
 import profile_icon from '../../assets/jack.png';
 
-const Navbar = () => {
+const Navbar = ({setSidebar}) => {
     return (
         <nav className='flex-div'>
             <div className='nav-left flex-div'>
-                <img src={menu_icon} className='menu-icon' />
+                <img src={menu_icon} className='menu-icon' onClick={()=>setSidebar(prev=>prev===false?true:false)} />
                 <img src={logo} className='logo' />
             </div> 
             <div className="nav-middle flex-div">
@@ -29,5 +30,9 @@ const Navbar = () => {
         </nav>
     );
 };
+
+Navbar.propTypes = {
+    setSidebar: PropTypes.bool.isRequired
+}
 
 export default Navbar;
